@@ -318,13 +318,9 @@ ISP=$(curl -s https://speed.cloudflare.com/meta | awk -F\" '{print $26"-"$18}' |
 sleep 1
 yellow "注意：v2ray或其他软件的跳过证书验证需设置为true,否则hy2或tuic节点可能不通\n"
 cat > list.txt <<EOF
-vmess://$(echo "{ \"v\": \"2\", \"ps\": \"$ISP\", \"add\": \"$IP\", \"port\": \"$vmess_port\", \"id\": \"$UUID\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\", \"path\": \"/vmess?ed=2048\", \"tls\": \"\", \"sni\": \"\", \"alpn\": \"\", \"fp\": \"\"}" | base64 -w0)
-
-vmess://$(echo "{ \"v\": \"2\", \"ps\": \"$ISP\", \"add\": \"www.visa.com.tw\", \"port\": \"443\", \"id\": \"$UUID\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"$argodomain\", \"path\": \"/vmess?ed=2048\", \"tls\": \"tls\", \"sni\": \"$argodomain\", \"alpn\": \"\", \"fp\": \"\"}" | base64 -w0)
 
 hysteria2://$UUID@$IP:$hy2_port/?sni=www.bing.com&alpn=h3&insecure=1#$ISP
 
-tuic://$UUID:admin123@$IP:$tuic_port?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#$ISP
 EOF
 cat list.txt
 purple "list.txt saved successfully"
@@ -338,7 +334,7 @@ rm -rf web bot npm boot.log config.json sb.log core tunnel.yml tunnel.json
 menu() {
    clear
    echo ""
-   purple "=== Serv00|ct8老王sing-box一键安装脚本 ===\n"
+   purple "=== Serv00|ct8老王sing-box一键安装脚本(Allen删减) ===\n"
    echo -e "${green}脚本地址：${re}${yellow}https://github.com/eooce/Sing-box${re}\n"
    echo -e "${green}反馈论坛：${re}${yellow}https://bbs.vps8.me${re}\n"
    echo -e "${green}TG反馈群组：${re}${yellow}https://t.me/vps888${re}\n"
