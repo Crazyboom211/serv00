@@ -36,6 +36,18 @@ read_hy2_port() {
     done
 }
 
+read_tuic_port() {
+    while true; do
+        reading "请输入Tuic端口 (面板开放的UDP端口): " tuic_port
+        if [[ "$tuic_port" =~ ^[0-9]+$ ]] && [ "$tuic_port" -ge 1 ] && [ "$tuic_port" -le 65535 ]; then
+            green "你的tuic端口为: $tuic_port"
+            break
+        else
+            yellow "输入错误，请重新输入面板开放的UDP端口"
+        fi
+    done
+}
+
 install_singbox() {
 echo -e "${yellow}安装${purple}(hysteria2)${re}"
 echo -e "${yellow}开始运行前，请确保在面板${purple}已开放对应的udp端口${re}"
