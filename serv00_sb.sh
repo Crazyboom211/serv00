@@ -182,7 +182,7 @@ generate_config() {
       "users": [
         {
           "uuid": "$UUID",
-          "password": "admin123"
+          "password": "Rainbow123"
         }
       ],
       "congestion_control": "bbr",
