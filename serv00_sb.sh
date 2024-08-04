@@ -161,6 +161,27 @@ generate_config() {
          "certificate_path": "cert.pem",
          "key_path": "private.key"
         }
+    },
+    {
+      "tag": "tuic-in",
+      "type": "tuic",
+      "listen": "::",
+      "listen_port": $tuic_port,
+      "users": [
+        {
+          "uuid": "$UUID",
+          "password": "admin123"
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ],
+        "certificate_path": "cert.pem",
+        "key_path": "private.key"
+      }
     }
  ],
     "outbounds": [
@@ -320,6 +341,8 @@ yellow "注意：v2ray或其他软件的跳过证书验证需设置为true,否�
 cat > list.txt <<EOF
 
 hysteria2://$UUID@$IP:$hy2_port/?sni=www.bing.com&alpn=h3&insecure=1#$ISP
+
+tuic://$UUID:admin123@$IP:$tuic_port?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#$ISP
 
 EOF
 cat list.txt
