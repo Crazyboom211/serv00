@@ -57,6 +57,7 @@ reading "\n确定继续安装吗？【y/n】: " choice
     [Yy])
         cd $WORKDIR
         read_hy2_port
+        read_tuic_port
         generate_config
         download_singbox && wait
         run_sb && sleep 3
